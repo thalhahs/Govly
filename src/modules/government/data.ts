@@ -13,7 +13,7 @@ export const dataGovernments: Governments = [
   {
     id: 1,
     name: "Department of Agriculture",
-    slug: "Agriculture",
+    slug: "agriculture",
     description:
       "The Department of Agriculture is responsible for the production and distribution of food and agriculture.",
     createdAt: new Date(),
@@ -22,16 +22,18 @@ export const dataGovernments: Governments = [
   {
     id: 2,
     name: "Department of Defense",
-    slug: "Defense",
-    description: "The Department of Defense is responsible for the defense of the country.",
+    slug: "defense",
+    description:
+      "The Department of Defense is responsible for the defense of the country.",
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
     id: 3,
     name: "Department of Education",
-    slug: "Education",
-    description: "The Department of Education is responsible for the education of the country.",
+    slug: "education",
+    description:
+      "The Department of Education is responsible for the education of the country.",
     createdAt: new Date(),
     updatedAt: new Date(),
   },

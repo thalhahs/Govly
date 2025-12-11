@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 
-import { govermentRoute } from "./modules/goverment/route";
+import { governmentRoute } from "./modules/government/route";
 import { commonRoute } from "./modules/common/route";
 
 const app = new Hono();
@@ -9,6 +9,6 @@ const app = new Hono();
 app.use(logger());
 
 app.route("/", commonRoute);
-app.route("/govdata", govermentRoute);
+app.route("/govdata", governmentRoute);
 
 export default app;

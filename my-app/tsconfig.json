@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "skipLibCheck": true,
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"

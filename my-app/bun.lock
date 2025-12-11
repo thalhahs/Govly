@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "my-app",
+      "name": "govly",
       "dependencies": {
         "hono": "^4.10.8",
       },

@@ -1,16 +1,18 @@
 import { Hono } from "hono";
-import { Government, dataGovernments } from "./data";
+import { Government, Governments, dataGovernments } from "./data";
 
 export const governmentRoute = new Hono();
 
+let governments: Governments = dataGovernments;
+
 governmentRoute.get("/", (c) => {
-  return c.json(dataGovernments);
+  return c.json(governments);
 });
 
 governmentRoute.get("/:slug", (c) => {
   const slug = c.req.param("slug");
 
-  const government = dataGovernments.find(
+  const government = governments.find(
     (government: Government) => government.slug === slug
   );
 
@@ -26,8 +28,8 @@ governmentRoute.post("/", async (c) => {
   const now = new Date();
 
   const newGovernment: Government = {
-    id: dataGovernments.length
-      ? Math.max(...dataGovernments.map((item) => item.id)) + 1
+    id: governments.length
+      ? Math.max(...governments.map((item) => item.id)) + 1
       : 1,
     name: body.name,
     slug: body.slug,
@@ -36,16 +38,14 @@ governmentRoute.post("/", async (c) => {
     updatedAt: now,
   };
 
-  dataGovernments.push(newGovernment);
+  governments = [...governments, newGovernment];
 
   return c.json(newGovernment, 201);
 });
 
-governmentRoute.patch("/:slug", async (c) => {
-  const slug = c.req.param("slug");
-  const government = dataGovernments.find(
-    (item: Government) => item.slug === slug
-  );
+governmentRoute.patch("/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+  const government = governments.find((government) => government.id === id);
 
   if (!government) {
     return c.notFound();
@@ -53,34 +53,31 @@ governmentRoute.patch("/:slug", async (c) => {
 
   const body = await c.req.json();
 
-  if (body.name !== undefined) {
-    government.name = body.name;
-  }
+  const updatedGovernment: Government = {
+    ...government,
+    ...body,
+    updatedAt: new Date(),
+  };
 
-  if (body.description !== undefined) {
-    government.description = body.description;
-  }
-
-  if (body.slug !== undefined) {
-    government.slug = body.slug;
-  }
-
-  government.updatedAt = new Date();
-
-  return c.json(government);
-});
-
-governmentRoute.delete("/:slug", (c) => {
-  const slug = c.req.param("slug");
-  const index = dataGovernments.findIndex(
-    (item: Government) => item.slug === slug
+  governments = governments.map((government) =>
+    government.id === id ? updatedGovernment : government
   );
 
-  if (index === -1) {
+  return c.json(updatedGovernment);
+});
+
+governmentRoute.delete("/:id", (c) => {
+  const id = Number(c.req.param("id"));
+
+  const deletedGovernment = governments.find(
+    (government) => government.id === id
+  );
+
+  if (!deletedGovernment) {
     return c.notFound();
   }
 
-  const [deletedGovernment] = dataGovernments.splice(index, 1);
+  governments = governments.filter((government) => government.id !== id);
 
   return c.json(deletedGovernment);
 });

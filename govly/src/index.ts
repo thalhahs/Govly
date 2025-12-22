@@ -9,6 +9,6 @@ const app = new Hono();
 app.use(logger());
 
 app.route("/", commonRoute);
-app.route("/govdata", governmentRoute);
+app.route("/governments", governmentRoute);
 
 export default app;

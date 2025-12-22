@@ -10,13 +10,13 @@ governmentRoute.get("/", (c) => {
 governmentRoute.get("/:slug", (c) => {
   const slug = c.req.param("slug");
 
-  const animal = dataGovernments.find(
+  const government = dataGovernments.find(
     (government: Government) => government.slug === slug
   );
 
-  if (!animal) {
+  if (!government) {
     return c.notFound();
   }
 
-  return c.json(animal);
+  return c.json(government);
 });

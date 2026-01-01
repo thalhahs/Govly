@@ -1,7 +1,8 @@
 {
   "name": "govly",
   "scripts": {
-    "dev": "bun run --hot govly/src/index.ts"
+    "dev": "bun run --hot govly/src/index.ts",
+    "start": "bun run govly/src/index.ts"
   },
   "dependencies": {
     "hono": "^4.10.8"

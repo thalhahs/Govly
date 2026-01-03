@@ -1,5 +1,6 @@
 import { Hono } from "hono";
-import { Government, Governments, dataGovernments } from "./data";
+import { dataGovernments } from "./data";
+import { Government, Governments } from "./schema";
 
 export const governmentRoute = new Hono();
 

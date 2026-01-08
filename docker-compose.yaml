@@ -1,12 +1,4 @@
 services:
-  backend:
-    image: govly
-    build:
-      context: .
-    ports:
-      - "3000:3000"
-    depends_on:
-      - database
   database:
     image: postgres:18.1-alpine
     ports:

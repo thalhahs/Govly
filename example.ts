@@ -25,9 +25,8 @@ try {
   const governments = result.rows;
   console.log({ governments });
 } catch (error) {
-  console.error(error){
-    console.error("Error connecting to the database");
-  };
+  console.error(error);
+  console.error("Error connecting to the database");
 } finally {
   await client.end();
 }

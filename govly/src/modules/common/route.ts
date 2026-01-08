@@ -5,6 +5,6 @@ export const commonRoute = new Hono();
 commonRoute.get("/", (c) => {
   return c.json({
     title: "Govly API",
-    govdata: "/govdata",
+    govdata: "/governments",
   });
 });

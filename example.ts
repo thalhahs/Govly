@@ -13,3 +13,19 @@ const governments = result.rows;
 console.log({ governments });
 
 await client.end();
+
+type Government = {
+  id: number;
+  name: string;
+  slug: string;
+};
+
+try {
+  const result = await client.query("SELECT * FROM governments");
+  const governments = result.rows;
+  console.log({ governments });
+} catch (error) {
+  console.error(error);
+} finally {
+  await client.end();
+}

@@ -22,8 +22,8 @@ Open http://localhost:3000
 | Endpoint          | HTTP   | Description                                      | Available |
 | ---------------- | ------ | ------------------------------------------------ | --------- |
 | `/`              | GET    | Get API info and link to government data        | ✅        |
-| `/govdata`       | GET    | Get all government departments                   | ✅        |
-| `/govdata/:slug` | GET    | Get a single department by slug                  | ✅        |
-| `/govdata`       | POST   | Add a new department                             | ✅        |
-| `/govdata/:slug` | PATCH  | Patch (partially update) a department by slug    | ✅        |
-| `/govdata/:slug` | DELETE | Delete a department by slug                      | ✅        |
+| `/governments`       | GET    | Get all government departments                   | ✅        |
+| `/governments/:slug` | GET    | Get a single department by slug                  | ✅        |
+| `/governments`       | POST   | Add a new department                             | ✅        |
+| `/governments/:slug` | PATCH  | Patch (partially update) a department by slug    | ✅        |
+| `/governments/:slug` | DELETE | Delete a department by slug                      | ✅        |

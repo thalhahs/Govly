@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -14,11 +14,11 @@ datasource db {
 }
 
 model Government {
-  id        Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  name      String
-  slug      String   @db.VarChar(300)
-  isExtinct Boolean
+  name     String
+  slug     String  @unique @db.VarChar(300)
+  isActive Boolean @default(true)
 
   description String
 

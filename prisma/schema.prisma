@@ -12,3 +12,16 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Government {
+  id        Int      @id @default(autoincrement())
+
+  name      String
+  slug      String   @db.VarChar(300)
+  isExtinct Boolean
+
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
